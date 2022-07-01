@@ -1,12 +1,10 @@
 data "ns_connection" "cluster" {
   name     = "cluster"
-  type     = "cluster/aws-fargate"
-  contract = "cluster/aws/ecs:fargate"
+  contract = "cluster/aws/ecs:ec2"
 }
 
 data "ns_connection" "network" {
   name     = "network"
-  type     = "network/aws"
   contract = "network/aws/vpc"
   via      = data.ns_connection.cluster.name
 }
