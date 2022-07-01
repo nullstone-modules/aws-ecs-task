@@ -1,6 +1,6 @@
 locals {
   standard_env_vars = tomap({
-    NULLSTONE_ENV           = data.ns_workspace.this.env_name
+    NULLSTONE_ENV           = local.env_name
     NULLSTONE_PUBLIC_HOSTS  = join(",", local.public_hosts)
     NULLSTONE_PRIVATE_HOSTS = join(",", local.private_hosts)
   })
@@ -30,11 +30,11 @@ resource "aws_ecs_task_definition" "this" {
   cpu                      = var.service_cpu
   memory                   = var.service_memory
   network_mode             = "awsvpc"
-  requires_compatibilities = ["FARGATE"]
+  requires_compatibilities = ["EC2"]
   execution_role_arn       = aws_iam_role.execution.arn
   depends_on               = [aws_iam_role_policy.execution]
   container_definitions    = jsonencode(concat([local.container_definition], local.addl_container_defs))
-  tags                     = data.ns_workspace.this.tags
+  tags                     = local.tags
   task_role_arn            = aws_iam_role.task.arn
 
   dynamic "volume" {

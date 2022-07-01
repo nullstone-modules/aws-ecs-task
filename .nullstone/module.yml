@@ -1,13 +1,13 @@
 org_name: nullstone
-name: aws-fargate-task
-friendly_name: Fargate Task
-description: Creates a Fargate application that is run on-demand.
+name: aws-ecs-task
+friendly_name: ECS Task
+description: Creates an ECS application that can be run on demand.
 category: app
 subcategory: container
 provider_types:
     - aws
 platform: ecs
-subplatform: fargate
+subplatform: ec2
 type: ""
 appCategories: []
 is_public: true
