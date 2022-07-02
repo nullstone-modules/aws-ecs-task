@@ -10,9 +10,9 @@ locals {
   env_vars = [for k, v in merge(local.standard_env_vars, var.service_env_vars) : { name = k, value = v }]
 
   container_definition = {
-    name      = local.main_container_name
-    image     = "${local.service_image}:${local.app_version}"
-    essential = true
+    name         = local.main_container_name
+    image        = "${local.service_image}:${local.app_version}"
+    essential    = true
     portMappings = []
 
     environment = concat(local.env_vars, try(local.capabilities.env, []))
@@ -42,6 +42,8 @@ resource "aws_ecs_task_definition" "this" {
 
     content {
       name = volume.key
+
+      host_path = volume.value.host_path
 
       dynamic "efs_volume_configuration" {
         for_each = length(volume.value.efs_volume) > 0 ? tomap({ "1" = jsondecode(volume.value.efs_volume) }) : tomap({})
