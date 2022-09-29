@@ -1,13 +1,5 @@
 locals {
-  standard_env_vars = tomap({
-    NULLSTONE_ENV           = local.env_name
-    NULLSTONE_PUBLIC_HOSTS  = join(",", local.public_hosts)
-    NULLSTONE_PRIVATE_HOSTS = join(",", local.private_hosts)
-  })
-
   main_container_name = "main"
-
-  env_vars = [for k, v in merge(local.standard_env_vars, var.service_env_vars) : { name = k, value = v }]
 
   container_definition = {
     name         = local.main_container_name
@@ -15,7 +7,7 @@ locals {
     essential    = true
     portMappings = []
 
-    environment = concat(local.env_vars, try(local.capabilities.env, []))
+    environment = local.env_vars
     secrets     = local.secret_refs
 
     mountPoints = local.mount_points
