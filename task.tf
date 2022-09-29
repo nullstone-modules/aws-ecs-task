@@ -16,7 +16,7 @@ locals {
     portMappings = []
 
     environment = concat(local.env_vars, try(local.capabilities.env, []))
-    secrets     = local.app_secrets
+    secrets     = local.secret_refs
 
     mountPoints = local.mount_points
     volumesFrom = []
