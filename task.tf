@@ -7,7 +7,7 @@ locals {
     essential    = true
     portMappings = []
 
-    environment = local.env_vars
+    environment = [for k, v in local.all_env_vars : { name = k, value = v }]
     secrets     = local.secret_refs
 
     mountPoints = local.mount_points

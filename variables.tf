@@ -19,23 +19,3 @@ Memory is measured in MiB, or megabytes.
 This means the default is 512 MiB or 0.5 GiB.
 EOF
 }
-
-variable "service_env_vars" {
-  type        = map(string)
-  default     = {}
-  description = <<EOF
-The environment variables to inject into the service.
-These are typically used to configure a service per environment.
-It is dangerous to put sensitive information in this variable because they are not protected and could be unintentionally exposed.
-EOF
-}
-
-variable "service_secrets" {
-  type        = map(string)
-  default     = {}
-  sensitive   = true
-  description = <<EOF
-The sensitive environment variables to inject into the service.
-These are typically used to configure a service per environment.
-EOF
-}
