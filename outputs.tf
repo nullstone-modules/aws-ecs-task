@@ -36,7 +36,7 @@ output "task_arn" {
 }
 
 output "app_security_group_id" {
-  value       = aws_security_group.this.id
+  value       = local.security_group_id
   description = "string ||| The ID of the security group attached to the app."
 }
 

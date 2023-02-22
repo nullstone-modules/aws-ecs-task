@@ -44,3 +44,7 @@ resource "aws_security_group_rule" "this-http-to-private-subnets" {
   to_port           = 80
   cidr_blocks       = local.private_cidrs
 }
+
+locals {
+  security_group_id = var.network_mode == "awsvpc" ? aws_security_group.this.id : ""
+}

@@ -19,3 +19,15 @@ Memory is measured in MiB, or megabytes.
 This means the default is 512 MiB or 0.5 GiB.
 EOF
 }
+
+variable "network_mode" {
+  type        = string
+  default     = "bridge"
+  description = <<EOF
+Specify the network mode to use for this task. The available options are `bridge` (default), and `awsvpc`.
+`Bridge` mode is the default and creates a virtual network bridge between the host and the task container.
+https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode-bridge.html
+`AWSVPC` mode creates and manages an ENI (elastic network interface) for each task and each task receives its own private IP address within the VPC.
+https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode-awsvpc.html
+EOF
+}
