@@ -19,8 +19,8 @@ locals {
 
 resource "aws_ecs_task_definition" "this" {
   family                   = local.resource_name
-  cpu                      = var.service_cpu
-  memory                   = var.service_memory
+  cpu                      = var.cpu
+  memory                   = var.memory
   network_mode             = "awsvpc"
   requires_compatibilities = ["EC2"]
   execution_role_arn       = aws_iam_role.execution.arn

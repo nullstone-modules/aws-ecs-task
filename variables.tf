@@ -1,4 +1,4 @@
-variable "service_cpu" {
+variable "cpu" {
   type        = number
   default     = 256
   description = <<EOF
@@ -9,7 +9,7 @@ A vCPU is a virtualization of a physical CPU.
 EOF
 }
 
-variable "service_memory" {
+variable "memory" {
   type        = number
   default     = 512
   description = <<EOF
