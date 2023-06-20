@@ -1,3 +1,6 @@
+# 0.2.1 (Jun 20, 2023)
+* Added `task_definition_arn` and `launch_type` to `app_metadata` for capabilities.
+
 # 0.2.0 (Apr 25, 2023)
 * Changed `cluster` connection to `cluster-namespace` connection.
 * Dropped `service_` prefix from variables.
