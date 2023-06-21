@@ -1,3 +1,6 @@
+# 0.2.3 (Jun 21, 2023)
+* Fix `launch_type` of events to `ECS`.
+
 # 0.2.2 (Jun 21, 2023)
 * Added support for events.
 * Changed `task_definition_arn` to `task_definition_name` to avoid cyclical dependencies.
