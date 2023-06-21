@@ -1,3 +1,6 @@
+# 0.2.4 (Jun 21, 2023)
+* Fixed "known after apply" for event capabilities.
+
 # 0.2.3 (Jun 21, 2023)
 * Fix `launch_type` of events to `ECS`.
 
