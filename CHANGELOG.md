@@ -1,3 +1,6 @@
+# 0.2.5 (Unreleased)
+* Added optional `var.command` to override image `CMD`.
+
 # 0.2.4 (Jun 21, 2023)
 * Fixed "known after apply" for event capabilities.
 
