@@ -1,3 +1,6 @@
+# 0.2.6 (Jul 25, 2023)
+* Switched to using the cluster from the namespace to ensure proper isolation.
+
 # 0.2.5 (Jun 23, 2023)
 * Added optional `var.command` to override image `CMD`.
 
