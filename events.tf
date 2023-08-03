@@ -14,7 +14,7 @@ resource "aws_cloudwatch_event_target" "this" {
     tags                   = local.tags
     task_count             = 1
     task_definition_arn    = aws_ecs_task_definition.this.arn
-    launch_type            = "ECS"
+    launch_type            = "EC2"
     enable_execute_command = true
 
     network_configuration {
