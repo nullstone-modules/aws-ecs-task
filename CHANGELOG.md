@@ -1,3 +1,10 @@
+# 0.3.0 (Aug 08, 2023)
+* Added compliance scanning.
+* Updated `README.md` with application management info.
+
+# 0.2.7 (Aug 03, 2023)
+* Fixed `event` capabilities attachment.
+
 # 0.2.6 (Jul 25, 2023)
 * Switched to using the cluster from the namespace to ensure proper isolation.
 
