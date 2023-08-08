@@ -4,6 +4,7 @@ locals {
 }
 
 resource "aws_secretsmanager_secret" "app_secret" {
+  # bridgecrew:skip=CKV2_AWS_57: "Ensure Secrets Manager secrets should have automatic rotation enabled". We cannot automatically rotate user secrets.
   for_each = local.secret_keys
 
   name_prefix = "${local.block_name}/${each.value}/"

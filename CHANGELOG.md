@@ -1,6 +1,7 @@
 # 0.3.0 (Aug 08, 2023)
 * Added compliance scanning.
 * Updated `README.md` with application management info.
+* Fix compliance issues.
 
 # 0.2.7 (Aug 03, 2023)
 * Fixed `event` capabilities attachment.
