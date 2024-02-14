@@ -66,6 +66,14 @@ locals {
       }
     ]
 
+    // resource_requirements enables the usage of GPU cores in a container
+    resource_requirements = [
+      {
+        type  = "GPU" // GPU|InferenceAccelerator
+        value = "1" // This is a string and represents the number of cores for a GPU
+      }
+    ]
+
     // sidecars allow capabilities to attach additional containers to the service
     sidecars = [
       {
