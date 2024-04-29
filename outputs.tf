@@ -35,6 +35,11 @@ output "task_arn" {
   description = "string ||| The AWS ARN of the app task definition."
 }
 
+output "launch_type" {
+  value       = "EC2"
+  description = "string ||| The ECS launch type used to execute commands."
+}
+
 output "app_security_group_id" {
   value       = aws_security_group.this.id
   description = "string ||| The ID of the security group attached to the app."

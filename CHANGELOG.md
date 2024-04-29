@@ -1,3 +1,6 @@
+# 0.3.11 (Apr 29, 2024)
+* Fixed launching of tasks using `nullstone exec`.
+
 # 0.3.10 (Feb 14, 2024)
 * Added GPU support.
 
