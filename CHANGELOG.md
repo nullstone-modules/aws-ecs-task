@@ -1,3 +1,6 @@
+# 0.3.12 (Jan 22, 2025)
+* When an app secret is removed, it is immediately deleted from AWS secrets manager.
+
 # 0.3.11 (Apr 29, 2024)
 * Fixed launching of tasks using `nullstone exec`.
 

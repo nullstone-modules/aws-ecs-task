@@ -8,9 +8,10 @@ resource "aws_secretsmanager_secret" "app_secret" {
   # bridgecrew:skip=CKV2_AWS_57: "Ensure Secrets Manager secrets should have automatic rotation enabled". We cannot automatically rotate user secrets.
   for_each = local.secret_keys
 
-  name_prefix = "${local.block_name}/${each.value}/"
-  tags        = local.tags
-  kms_key_id  = aws_kms_alias.this.arn
+  name_prefix             = "${local.block_name}/${each.value}/"
+  tags                    = local.tags
+  kms_key_id              = aws_kms_alias.this.arn
+  recovery_window_in_days = 0 // force delete so that re-adding the secret doesn't cause issues
 
   lifecycle {
     create_before_destroy = true
