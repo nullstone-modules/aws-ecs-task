@@ -1,3 +1,6 @@
+# 0.3.13 (Mar 10, 2025)
+* Added `subnet_ids` to capabilities variables `app_metadata`.
+
 # 0.3.12 (Jan 22, 2025)
 * When an app secret is removed, it is immediately deleted from AWS secrets manager.
 
