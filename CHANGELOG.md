@@ -1,3 +1,7 @@
+# 0.3.15 (Mar 19, 2025)
+* Added support for linux kernel capabilities from Nullstone capabilities.
+* Added support for ulimits from Nullstone capabilities.
+
 # 0.3.14 (Mar 10, 2025)
 * Emitting `subnet_ids` in `app_metadata` as comma-delimited string.
 
