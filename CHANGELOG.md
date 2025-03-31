@@ -1,3 +1,6 @@
+# 0.3.16 (Mar 31, 2025)
+* Fixed configuration of linux parameters.
+
 # 0.3.15 (Mar 19, 2025)
 * Added support for linux kernel capabilities from Nullstone capabilities.
 * Added support for ulimits from Nullstone capabilities.
