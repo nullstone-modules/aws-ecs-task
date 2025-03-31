@@ -1,3 +1,6 @@
+# 0.3.17 (Mar 31, 2025)
+* Fixed contract for linux kernel capabilities from Nullstone capabilities.
+
 # 0.3.16 (Mar 31, 2025)
 * Fixed configuration of linux parameters.
 
