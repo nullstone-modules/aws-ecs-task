@@ -20,6 +20,6 @@ locals {
     log_group_name       = module.logs.name
     internal_subdomain   = ""
     task_definition_name = local.resource_name
-    launch_type          = "ECS"
+    launch_type          = "EC2"
   })
 }
