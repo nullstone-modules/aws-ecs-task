@@ -1,3 +1,6 @@
+# 0.3.19 (Jul 09, 2025)
+* Added `nullstone.io/version` tag to task definition.
+
 # 0.3.18 (Mar 31, 2025)
 * Fixed `launch_type` injected into capabilities.
 
