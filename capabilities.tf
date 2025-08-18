@@ -70,7 +70,7 @@ locals {
     resource_requirements = [
       {
         type  = "GPU" // GPU|InferenceAccelerator
-        value = "1" // This is a string and represents the number of cores for a GPU
+        value = "1"   // This is a string and represents the number of cores for a GPU
       }
     ]
 
