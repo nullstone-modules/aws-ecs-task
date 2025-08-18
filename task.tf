@@ -20,17 +20,9 @@ locals {
     volumesFrom = []
 
     resourceRequirements = local.resource_requirements
-
-    logConfiguration = local.log_configuration
-
-    ulimits = local.ulimits
-
-    linuxParameters = length(local.kernel_cap_add) > 0 ? {
-      capabilities = {
-        add  = local.kernel_cap_add
-        drop = []
-      }
-    } : null
+    logConfiguration     = local.log_configuration
+    ulimits              = local.ulimits
+    linuxParameters      = local.linux_params
   }
 }
 
