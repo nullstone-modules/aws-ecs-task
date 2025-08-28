@@ -1,3 +1,6 @@
+# 0.3.25 (Aug 28, 2025)
+* Fixed `var.memory` description.
+
 # 0.3.24 (Aug 19, 2025)
 * Fixed syntax constructing `linuxParameters`.
 
