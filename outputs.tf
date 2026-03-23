@@ -3,23 +3,6 @@ output "region" {
   description = "string ||| The region where the ECS task resides."
 }
 
-output "image_repo_url" {
-  value       = aws_ecr_repository.this.repository_url
-  description = "string ||| The URL of the ECR repository."
-}
-
-output "image_pusher" {
-  value = {
-    name       = aws_iam_user.image_pusher.name
-    access_key = aws_iam_access_key.image_pusher.id
-    secret_key = aws_iam_access_key.image_pusher.secret
-  }
-
-  description = "object({ name: string, access_key: string, secret_key: string }) ||| An AWS User with explicit privilege to push images."
-
-  sensitive = true
-}
-
 output "service_name" {
   value       = ""
   description = "string ||| This is an empty string because there is no service for a task."
@@ -45,16 +28,14 @@ output "app_security_group_id" {
   description = "string ||| The ID of the security group attached to the app."
 }
 
+output "image_pusher" {
+  value       = local.pusher
+  description = "object({ role_arn: string, session_duration: number }) ||| An AWS role with explicit privilege to push images."
+}
+
 output "deployer" {
-  value = {
-    name       = aws_iam_user.deployer.name
-    access_key = aws_iam_access_key.deployer.id
-    secret_key = aws_iam_access_key.deployer.secret
-  }
-
-  description = "object({ name: string, access_key: string, secret_key: string }) ||| An AWS User with explicit privilege to deploy the ECS task."
-
-  sensitive = true
+  value       = local.deployer
+  description = "object({ role_arn: string, session_duration: number, name: string, access_key: string, secret_key: string}) ||| An AWS IAM identity with explicit privilege to deploy ECS services."
 }
 
 output "log_provider" {
@@ -68,9 +49,34 @@ output "log_group_name" {
 }
 
 output "log_reader" {
-  value       = module.logs.reader
-  description = "object({ name: string, access_key: string, secret_key: string }) ||| An AWS User with explicit privilege to read logs from Cloudwatch."
+  value       = merge(module.logs.reader, { session_duration : 3600 })
+  description = "object({ role_arn: string, session_duration: number }) ||| An AWS Role with explicit privilege to read logs from Cloudwatch."
   sensitive   = true
+}
+
+output "metrics_provider" {
+  value       = "cloudwatch"
+  description = "string ||| "
+}
+
+output "metrics_reader" {
+  value       = merge(module.logs.reader, { session_duration : 3600 })
+  description = "object({ role_arn: string, session_duration: number }) ||| An AWS Role with explicit privilege to read metrics from Cloudwatch."
+  sensitive   = true
+}
+
+output "metrics_mappings" {
+  value = local.metrics_mappings
+}
+
+output "image_repo_name" {
+  value       = try(aws_ecr_repository.this[0].name, "")
+  description = "string ||| "
+}
+
+output "image_repo_url" {
+  value       = try(aws_ecr_repository.this[0].repository_url, "")
+  description = "string ||| "
 }
 
 output "private_urls" {

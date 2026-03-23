@@ -1,20 +1,21 @@
 module "logs" {
-  #bridgecrew:skip=CKV_TF_1: "Ensure Terraform module sources use a commit hash". We want to accept any updates to minor updates.
   source  = "nullstone-modules/logs/aws"
-  version = "~>0.1.0"
+  version = "~> 0.2.0"
 
-  name              = local.resource_name
-  tags              = local.tags
-  enable_log_reader = true
-  retention_in_days = local.log_retention_in_days
-  kms_key_arn       = aws_kms_alias.this.arn
+  name                       = local.resource_name
+  tags                       = local.tags
+  log_reader_type            = "role"
+  log_reader_role_principals = [local.ns_agent_user_arn]
+  enable_get_metrics         = true
+  retention_in_days          = local.log_retention_in_days
+  kms_key_arn                = aws_kms_alias.this.arn
 }
 
 locals {
   log_configuration = {
     logDriver = "awslogs"
     options = {
-      "awslogs-region"        = data.aws_region.this.region
+      "awslogs-region"        = local.region
       "awslogs-group"         = module.logs.name
       "awslogs-stream-prefix" = local.block_name
     }

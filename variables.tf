@@ -20,6 +20,16 @@ This means the default is 512 MiB or 0.5 GiB.
 EOF
 }
 
+variable "image" {
+  type        = string
+  default     = ""
+  description = <<EOF
+The docker image to deploy for this service.
+By default, this is blank, which means that an ECR repo is created and used.
+Use this variable to configure against docker hub, quay, etc.
+EOF
+}
+
 variable "command" {
   type        = list(string)
   default     = []
