@@ -1,3 +1,6 @@
+# 0.5.1 (May 26, 2026)
+* Use "latest" revision to trigger task via events.
+
 # 0.5.0 (Mar 22, 2026)
 * Migrated from AWS access keys to IAM roles for automation roles (push, deploy, log reader).
 
