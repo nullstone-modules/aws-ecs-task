@@ -8,24 +8,35 @@ locals {
       namespace  = ""
       env_prefix = ""
       outputs    = {}
+
+      meta = {
+        subcategory = ""
+        platform    = ""
+        subplatform = ""
+        outputNames = []
+      }
     }
   ]
 
-  cap_env_vars = {}
-  cap_secrets  = {}
+  // cap_env_prefixes is a map indexed by tfId which points to the env_prefix in local.cap_modules
+  cap_env_prefixes = tomap({
+    x = ""
+  })
 
   capabilities = {
     env = [
       {
-        name  = ""
-        value = ""
+        cap_tf_id = "x"
+        name      = ""
+        value     = ""
       }
     ]
 
     secrets = [
       {
-        name  = ""
-        value = ""
+        cap_tf_id = "x"
+        name      = ""
+        value     = sensitive("")
       }
     ]
 
@@ -34,7 +45,8 @@ locals {
     // They will be flattened into list(string) when we output from this module
     private_urls = [
       {
-        url = ""
+        cap_tf_id = "x"
+        url       = "http://example"
       }
     ]
 
@@ -43,12 +55,14 @@ locals {
     // They will be flattened into list(string) when we output from this module
     public_urls = [
       {
-        url = ""
+        cap_tf_id = "x"
+        url       = "https://example.com"
       }
     ]
 
     log_configurations = [
       {
+        cap_tf_id = "x"
         logDriver = "awslogs"
         options = {
           "awslogs-region"        = data.aws_region.this.region
@@ -62,22 +76,25 @@ locals {
     // The name of each mount point will be added to the task as a volume, then mounted in the main container
     mount_points = [
       {
-        name = "volume-name"
-        path = "/path/on/main/disk"
+        cap_tf_id = "x"
+        name      = "volume-name"
+        path      = "/path/on/main/disk"
       }
     ]
 
     // resource_requirements enables the usage of GPU cores in a container
     resource_requirements = [
       {
-        type  = "GPU" // GPU|InferenceAccelerator
-        value = "1"   // This is a string and represents the number of cores for a GPU
+        cap_tf_id = "x"
+        type      = "GPU" // GPU|InferenceAccelerator
+        value     = "1"   // This is a string and represents the number of cores for a GPU
       }
     ]
 
     // sidecars allow capabilities to attach additional containers to the service
     sidecars = [
       {
+        cap_tf_id    = "x"
         name         = ""
         image        = ""
         essential    = false
@@ -95,6 +112,7 @@ locals {
     // The app module will use information about the app, cluster, and network to create event targets
     events = [
       {
+        cap_tf_id = "x"
         rule_name = ""
         role_arn  = ""
         input     = "{}"
