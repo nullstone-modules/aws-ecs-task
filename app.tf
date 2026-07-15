@@ -21,5 +21,6 @@ locals {
     internal_subdomain   = ""
     task_definition_name = local.resource_name
     launch_type          = "EC2"
+    image_repo_name      = try(aws_ecr_repository.this[0].name, "")
   })
 }
