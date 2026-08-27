@@ -4,6 +4,7 @@ friendly_name: ECS Task
 description: Creates an ECS application that can be run on demand.
 category: app
 subcategory: container
+app_type: generic
 provider_types:
     - aws
 platform: ecs
